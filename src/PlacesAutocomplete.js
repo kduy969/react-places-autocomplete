@@ -83,18 +83,28 @@ class PlacesAutocomplete extends React.Component {
       return;
     }
     const { highlightFirstSuggestion } = this.props;
+    const suggestions = [{
+      formattedSuggestion:{
+        mainText:"Can't find your place, don't worry !",
+        secondaryText:"Click here to go next step"
+      },
+      index:0,
+      id:-1,
+      active:true
+    }].concat(predictions.map((p, idx) => ({
+      id: p.id,
+      description: p.description,
+      placeId: p.place_id,
+      active: highlightFirstSuggestion && idx === 0 ? true : false,
+      index: idx + 1,
+      formattedSuggestion: formattedSuggestion(p.structured_formatting),
+      matchedSubstrings: p.matched_substrings,
+      terms: p.terms,
+      types: p.types,
+    })));
+
     this.setState({
-      suggestions: predictions.map((p, idx) => ({
-        id: p.id,
-        description: p.description,
-        placeId: p.place_id,
-        active: highlightFirstSuggestion && idx === 0 ? true : false,
-        index: idx,
-        formattedSuggestion: formattedSuggestion(p.structured_formatting),
-        matchedSubstrings: p.matched_substrings,
-        terms: p.terms,
-        types: p.types,
-      })),
+      suggestions
     });
   };
 

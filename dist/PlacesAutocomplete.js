@@ -78,20 +78,30 @@ var PlacesAutocomplete = function (_React$Component) {
       }
       var highlightFirstSuggestion = _this.props.highlightFirstSuggestion;
 
+      var suggestions = [{
+        formattedSuggestion: {
+          mainText: "Can't find your place, don't worry !",
+          secondaryText: "Click here to go next step"
+        },
+        index: 0,
+        id: -1,
+        active: true
+      }].concat(predictions.map(function (p, idx) {
+        return {
+          id: p.id,
+          description: p.description,
+          placeId: p.place_id,
+          active: highlightFirstSuggestion && idx === 0 ? true : false,
+          index: idx + 1,
+          formattedSuggestion: formattedSuggestion(p.structured_formatting),
+          matchedSubstrings: p.matched_substrings,
+          terms: p.terms,
+          types: p.types
+        };
+      }));
+
       _this.setState({
-        suggestions: predictions.map(function (p, idx) {
-          return {
-            id: p.id,
-            description: p.description,
-            placeId: p.place_id,
-            active: highlightFirstSuggestion && idx === 0 ? true : false,
-            index: idx,
-            formattedSuggestion: formattedSuggestion(p.structured_formatting),
-            matchedSubstrings: p.matched_substrings,
-            terms: p.terms,
-            types: p.types
-          };
-        })
+        suggestions: suggestions
       });
     };
 
