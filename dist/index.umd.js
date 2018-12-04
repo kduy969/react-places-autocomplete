@@ -160,8 +160,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var suggestions = [{
 	        formattedSuggestion: {
-	          mainText: "Can't find your place, don't worry !",
-	          secondaryText: "Click here to go next step"
+	          mainText: _this.props.noOptionMainText,
+	          secondaryText: _this.props.noOptionSecondaryText
 	        },
 	        index: 0,
 	        id: -1,

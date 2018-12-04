@@ -85,8 +85,8 @@ class PlacesAutocomplete extends React.Component {
     const { highlightFirstSuggestion } = this.props;
     const suggestions = [{
       formattedSuggestion:{
-        mainText:"Can't find your place, don't worry !",
-        secondaryText:"Click here to go next step"
+        mainText:this.props.noOptionMainText,
+        secondaryText:this.props.noOptionSecondaryText
       },
       index:0,
       id:-1,
