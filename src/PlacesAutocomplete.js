@@ -80,6 +80,7 @@ class PlacesAutocomplete extends React.Component {
     this.setState({ loading: false });
     if (status !== this.autocompleteOK) {
       predictions= [];
+      console.log("CANNOT FIND THIS PLACE");
       /*this.props.onError(status, this.clearSuggestions);
       return;*/
     }
