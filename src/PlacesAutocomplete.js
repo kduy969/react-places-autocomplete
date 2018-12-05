@@ -79,8 +79,9 @@ class PlacesAutocomplete extends React.Component {
   autocompleteCallback = (predictions, status) => {
     this.setState({ loading: false });
     if (status !== this.autocompleteOK) {
-      this.props.onError(status, this.clearSuggestions);
-      return;
+      predictions= [];
+      /*this.props.onError(status, this.clearSuggestions);
+      return;*/
     }
     const { highlightFirstSuggestion } = this.props;
     const suggestions = [{
